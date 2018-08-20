@@ -29,11 +29,8 @@ public class Tarea3_201700628 {
                 
                 switch(menuP){ 
                     case 1:{
-                        System.out.println("-----USUARIOS-----");
-                        System.out.println("1. Ingresar Usuarios");
-                        System.out.println("2. Mostrar usuarios Ascendente");
-                        System.out.println("3. Mostrar usuarios Descendente");
-                        System.out.println("4. Menu Principal"); break;
+                        System.out.println("-----USUARIOS-----");                     
+                        IngresarUsuarios(); break;
                     }
                     
                     case 2:{
@@ -49,7 +46,8 @@ public class Tarea3_201700628 {
                     }
                     
                     case 4:{
-                        System.out.println("CALCULAR PROMEDIO (4 NOTAS DE 6 ESTUDIANTES)"); break;
+                        System.out.println("CALCULAR PROMEDIO (4 NOTAS DE 6 ESTUDIANTES)"); 
+                        calcularPromedioEstudiantes(); break;
                     }
                     
                 }
@@ -64,12 +62,43 @@ public class Tarea3_201700628 {
     
     
     public static void IngresarUsuarios() {
-        //vector
-        String usuarios[] = new String[5];
-        String usuario;
-        Scanner entradausuario = new Scanner(System.in);
         
-    }
+            int menuIU;
+        Scanner opcionIU = new Scanner(System.in);
+        Scanner entradaUs = new Scanner(System.in);
+        
+            System.out.println("1. Ingresar 5 Usuarios");
+            System.out.println("2. Mostrar usuarios ascendente");
+            System.out.println("3. Mostrar usuarios descendente");
+            System.out.println("4. MENU PRINCIPAL");
+            
+            menuIU = opcionIU.nextInt();
+            String[] usuarios = new String[5];
+            
+            switch(menuIU){
+                
+                case 1:
+       
+                        for(int i=0; i<usuarios.length; i++){
+                        System.out.println("Ingrese un usuario");
+                        usuarios[i] = entradaUs.next().toString(); 
+                }
+                case 2: 
+                    System.out.println("\n los usuarios son");
+                    for(int i = 0; i<usuarios.length; i++){
+                    System.out.println(usuarios[i]); 
+                }
+                case 3: 
+                    System.out.println("\n los usuarios son");
+                    for(int i = usuarios.length; i>=0; i--){
+                    System.out.println(usuarios[i]);
+                    }   
+                case 4: //menu principal
+                
+            }
+        
+        
+        }
     
     public static void ContadorDigitosRepetidos() {
         
@@ -127,6 +156,8 @@ public class Tarea3_201700628 {
         }while(menuCDR !=4); 
         }catch(Exception e){
           System.out.println("Error de caracter, ejecute nuevamente");
+          
+          
                         }
         
         }
@@ -202,7 +233,56 @@ public class Tarea3_201700628 {
           System.out.println("Error de caracter, ejecute nuevamente");
     }
     }
-    public static void calcularPromedio() {
+    public static void calcularPromedioEstudiantes() {
+        
+        Scanner opcionCPE = new Scanner (System.in);
+        int menuCPE;
+        
+        
+        do{
+            System.out.println("--CALCULAR PROMEDIO DE 6 ESTUDIANTES");
+            System.out.println("1. Ingresar id y notas de los estudiantes");
+            System.out.println("2. Regresar MENU PRINCIPAL");
+            
+            menuCPE=opcionCPE.nextInt();
+            
+            switch(menuCPE){
+                
+                case 1:{
+                    Scanner entradaNotas = new Scanner(System.in);
+                    int notas[][] = new int [5][5];
+                    int suma;
+                    float promedio = 0;
+                    
+                    
+                    
+                    for(int i=0; i < notas.length; i++){
+                        for(int j=0; j <notas.length; j++){
+                            System.out.print("matriz["+i+"]["+j+"]: ");
+                            notas[i][j] = entradaNotas.nextInt();
+                        }
+                    }
+                    //muestra matriz en consola
+                    System.out.println("Matriz notas");
+                    for(int i=0; i < notas.length; i++){
+                        for(int j=0; j < notas.length; j++){
+                            System.out.print(notas[i][j]+" "); 
+                        }
+                        System.out.println("");
+                    }
+                    
+                    for(int i=0; i < notas.length; i++){
+                        suma=0;
+                        for(int j=0; j < notas.length; j++){
+                            suma += notas[i][j];
+                            promedio=suma/5;
+                                    
+                        }
+                        System.out.println("promedio de la fila["+i+"]" +promedio);
+                    }     
+                }
+            }
+        }while(menuCPE!=2);
         
         
         
